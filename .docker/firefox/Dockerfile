@@ -12,7 +12,7 @@ RUN set -eux; apt-get update; \
     # fetch latest release
     wget -O /tmp/firefox-setup.tar.xz "${SRC_URL}"; \
     mkdir /usr/lib/firefox; \
-    tar -xjf /tmp/firefox-setup.tar.xz -C /usr/lib; \
+    tar -xJf /tmp/firefox-setup.tar.xz -C /usr/lib; \
     rm -f /tmp/firefox-setup.tar.xz; \
     ln -s /usr/lib/firefox/firefox /usr/bin/firefox; \
     #
@@ -26,7 +26,7 @@ RUN set -eux; apt-get update; \
     rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 #
-# copy configuation files
+# copy configuration files
 COPY supervisord.conf /etc/neko/supervisord/firefox.conf
 COPY neko.js /usr/lib/firefox/mozilla.cfg
 COPY autoconfig.js /usr/lib/firefox/defaults/pref/autoconfig.js
